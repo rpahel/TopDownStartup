@@ -1,11 +1,12 @@
 {
     "name": "game",
-    "rootNamespace": "",
+    "rootNamespace": "bidule",
     "references": [
         "Unity.InputSystem",
         "RedStudio.SerializableCallback",
         "NaughtyAttributes.Core",
-        "Cinemachine"
+        "Cinemachine",
+        "UnityEngine.Advertisements"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 6521041082167087694}
-  _speed: 10000
+  _startSpeed: 10
   _onStartWalking:
     m_PersistentCalls:
       m_Calls: []
