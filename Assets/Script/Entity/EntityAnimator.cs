@@ -8,7 +8,6 @@ public class EntityAnimator : MonoBehaviour
     [SerializeField, Required, BoxGroup("Dependencies")] Animator _animator;
 
     [SerializeField, Required, BoxGroup("Dependencies")] EntityMovement _movement;
-    [SerializeField, Required, BoxGroup("Dependencies")] EntityAttack _attack;
 
     [BoxGroup("Animator Param")]
     [SerializeField, AnimatorParam(nameof(_animator), AnimatorControllerParameterType.Bool)]
@@ -33,7 +32,6 @@ public class EntityAnimator : MonoBehaviour
         _movement.OnStartWalking += MoveStart;
         _movement.OnStopWalking += MoveStop;
         // Attack
-        _attack.OnAttack += Attack;
     }
 
     void OnDestroy()
@@ -41,8 +39,6 @@ public class EntityAnimator : MonoBehaviour
         // Move
         _movement.OnStartWalking -= MoveStart;
         _movement.OnStopWalking -= MoveStop;
-        // Attack
-        _attack.OnAttack -= Attack;
     }
 
     void MoveStart() => _animator.SetBool(_isWalkingParam, true);

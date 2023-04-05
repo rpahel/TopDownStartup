@@ -4,8 +4,56 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public static class MyLinq
+{
+    public static void DestroyAllChild(this GameObject @this)
+    {
+        foreach (Transform child in @this.transform)
+        {
+            GameObject.Destroy(child);
+        }
+    }
+    public static IEnumerable<int> WhereMajeur (this IEnumerable<int> @this)
+    {
+        foreach(var el in @this)
+        {
+            if (el < 18) continue;
+            else yield return el;
+        }
+    }
+    public static IEnumerable<int> WhereMajeur (this IEnumerable<int> @this, Func<int, bool> strategy)
+    {
+        foreach (int el in @this)
+        {
+            if (strategy.Invoke(el)) yield return el;
+        }
+    }
+}
+
 public class DataReader : MonoBehaviour
 {
+    void coucou()
+    {
+        List<int> data = new() { 12, 25, 28, 0, -12, 36, 42 };
+        data.WhereMajeur(Filter);
+        data.WhereMajeur(i => i > 18);
+
+
+        (string, int) monCharacter = ("Kevin", 42);
+        (int atk, int def, int vit, float, int) coucou;
+
+    }
+    struct Character
+    {
+        public string name;
+        public int age;
+    }
+    bool Filter(int test)
+    {
+        if (test < 18) return false;
+        else return true;
+    }
+
     [SerializeField] TextAsset _pokemonFile;
     [SerializeField] TextAsset _itemFile;
     [SerializeField] TextAsset _movesFile;
@@ -27,7 +75,7 @@ public class DataReader : MonoBehaviour
 
     public IEnumerable<Pokemon> GetPokemons()
         => ReadData<PokemonData>(_pokemonFile).pokemons;
-    
+
 
     // TODO
     public Pokemon GetPokemonById(int id)

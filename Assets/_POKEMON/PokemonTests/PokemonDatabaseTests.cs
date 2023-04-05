@@ -16,8 +16,10 @@ public class PokemonDatabaseTests
         // Arrange
         var db = new GameObject("test").AddComponent<DataReader>().Init();
 
+        var tmpdata = db.GetPokemons().ToList();
+
         // Act
-        var result = db.PokemonByType(type);
+        var result = db.PokemonByType(type).ToList();
 
         // Assert
         Assert.That(result, Is.Not.Null);
@@ -74,6 +76,7 @@ public class PokemonDatabaseTests
 
         // Act
         var result = db.GetDownPokemonByBasePower(10);
+
         List<int> expected = new() { 746, 191, 298, 401, 10, 13, 265, 280, 129, 349, };
 
         // Assert
