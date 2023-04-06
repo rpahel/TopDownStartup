@@ -26,12 +26,13 @@ public class Alterable<T>
         public object Label { get => _label; set => _label = value; }
     }
 
-    private T startValue;
+    T startValue;
     List<Transformateur> _data;
 
     public Alterable(T initialValue)
     {
         startValue = initialValue;
+        _data = new List<Transformateur>();
     }
 
     public object AddTransformator(Func<T, T> method, int weight)
@@ -43,7 +44,6 @@ public class Alterable<T>
         // if (method == null) throw new ArgumentNullException(nameof(method));
         // if (weight < 0) throw new ArgumentException(nameof(weight));
 
-
         var t = new Transformateur(method, weight, new Object());
 
         // Transformateur insertion
@@ -53,11 +53,17 @@ public class Alterable<T>
             if (_data[idx].Weight > weight) break;
         }
         _data.Insert(idx, t);
+        return t.Label;
+
+
 
         // Linq powa
         //_data.Insert(_data.Select((i, idx) => (i, idx)).First(i => i.i.Weight > weight).idx, t);
 
-        return t.Label;
+        // Linq powa encore pire niveau perf
+        //_data = _data.Append(t).OrderBy(i => i.Weight).ToList();
+        
+
     }
 
     public void RemoveTransformator(object label)
