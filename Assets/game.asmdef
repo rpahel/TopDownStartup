@@ -1,6 +1,6 @@
 {
-    "name": "game",
-    "rootNamespace": "bidule",
+    "name": "Game",
+    "rootNamespace": "Game",
     "references": [
         "Unity.InputSystem",
         "RedStudio.SerializableCallback",
