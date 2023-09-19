@@ -29,7 +29,7 @@ namespace TU_Challenge.Heritage
         }
         internal void Die()
         {
-            throw new NotImplementedException();
+            OnDie?.Invoke();
         }
 
         internal bool Crier()
