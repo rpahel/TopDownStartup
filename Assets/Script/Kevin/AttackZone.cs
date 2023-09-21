@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class AttackZone : MonoBehaviour
 {
-    HashSet<IHealth> _inZone;
+    HashSet<IKevinHealth> _inZone;
 
-    public IEnumerable<IHealth> InZone => _inZone;
+    public IEnumerable<IKevinHealth> InZone => _inZone;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class AttackZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out IHealth h))
+        if(collision.TryGetComponent(out IKevinHealth h))
         {
             _inZone.Add(h);
         }
@@ -29,7 +29,7 @@ public class AttackZone : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<IHealth>(out var h))
+        if (collision.TryGetComponent<IKevinHealth>(out var h))
         {
             _inZone.Remove(h);
         }
