@@ -36,14 +36,10 @@ namespace Game
             }
             return _objectQueue;
         }
-
-        public void GetObject()
-        { 
-            _actualInitialisable = _objects.Dequeue();
-        }
         
-        private void Initialize(Vector2 pos)
+        public void Initialize(Vector2 pos)
         {
+            _actualInitialisable = _objects.Dequeue();
             _actualInitialisable.Initialize(pos);
         }
         
