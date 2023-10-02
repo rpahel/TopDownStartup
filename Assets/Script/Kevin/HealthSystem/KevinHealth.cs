@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Health : MonoBehaviour, IHealth
+public class KevinHealth : MonoBehaviour, IKevinHealth
 {
     [SerializeField] int _maxHealth;
 

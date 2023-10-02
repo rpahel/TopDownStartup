@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthProxy : MonoBehaviour, IHealth
+public class KevinHealthProxy : MonoBehaviour, IKevinHealth
 {
-    [SerializeField, Required] Health _target;
+    [SerializeField, Required] KevinHealth _target;
 
     public void Damage(int amount) => _target.Damage(amount);
     public void Kill() => _target.Kill();
