@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public class Enemy : MonoBehaviour, IDamageable, ICloneable, IAttack, IInitialisable
+    public class Enemy : MonoBehaviour, IHealth, ICloneable, IAttack, IInitialisable
     {
         //== Fields ================================================
         [SerializeField] private EnemyDataSO _enemyData;
@@ -34,6 +34,11 @@ namespace Game
             OnDie -= PlayDeathSound;
         }
 
+        private void OnDisable()
+        {
+            throw new NotImplementedException();
+        }
+
         //== Interface Implementations =============================
         public object Clone()
         {
@@ -48,7 +53,9 @@ namespace Game
             return clone;
         }
 
-        public void Initialize()
+        public PoolSystem Pool { get; set; }
+
+        public void Initialize(Vector2 spawnPos)
         {
             if (!_enemyData)
                 throw new NullReferenceException("Enemy " + name + " : _enemyData is null !");
@@ -67,9 +74,16 @@ namespace Game
 
             // TODO : Heritage (EnemyAttackArcher, Warrior, etc) pareil pour movement.
             _enemyAttack = new EnemyAttack();
-            _enemyMovement = new EnemyMovement();
+
+            transform.position = spawnPos;
         }
 
+        public void Disable()
+        {
+            gameObject.SetActive(false);
+        }
+        
+        
         // Todo : Appeler un methode de la class EnemyAttack
         public void Attack(){}
 
@@ -79,7 +93,14 @@ namespace Game
             if (Health <= 0)
                 Die();
         }
-        
+
+        public void Regen(int amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Die() => OnDie?.Invoke();
+
         //== Public Methods ========================================
         public string GetName()
         {
@@ -93,7 +114,6 @@ namespace Game
         }
         
         //== Private Methods =======================================
-        private void Die() => OnDie?.Invoke();
         private void PlayDeathAnimation(){}
         private void PlayDeathSound(){}
     }

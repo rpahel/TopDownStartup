@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace Game
 {
-    public interface IDamageable
+    public interface IHealth
     {
         public void TakeDamage(int damage);
+        public void Regen(int amount);
+        public void Die();
     }
 }
