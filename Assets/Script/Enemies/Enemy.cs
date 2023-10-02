@@ -7,8 +7,8 @@ namespace Game
     {
         //== Fields ================================================
         [SerializeField] private EnemyDataSO _enemyData;
+        [SerializeField] private EnemyMovement _enemyMovement;
         
-        private EnemyMovement _enemyMovement;
         private AttackClass _enemyAttack;
         
         //== Properties ============================================
@@ -17,6 +17,7 @@ namespace Game
         public int Damage { get; private set; }
         public float FireRate { get; private set; }
         public AttackType AttackType { get; private set; }
+        public EnemyMovement GetMovement => _enemyMovement;
         
         //== Events ================================================
         public event Action OnDie;
@@ -123,7 +124,14 @@ namespace Game
         }
         
         //== Private Methods =======================================
-        private void PlayDeathAnimation(){}
-        private void PlayDeathSound(){}
+        private void PlayDeathAnimation()
+        {
+            Debug.Log(name + " : *Dies*");
+        }
+
+        private void PlayDeathSound()
+        {
+            Debug.Log(name + " : Eurgh !");
+        }
     }
 }
