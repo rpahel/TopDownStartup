@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using Game;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,6 +32,7 @@ public static class AnimationExtension
 public class PlayerBrain : MonoBehaviour
 {
     [SerializeField, BoxGroup("Dependencies")] EntityMovement _movement;
+    [SerializeField, BoxGroup("Dependencies")] PlayerAttack _attack;
 
     [SerializeField, BoxGroup("Input")] InputActionProperty _moveInput;
     [SerializeField, BoxGroup("Input")] InputActionProperty _attackInput;
@@ -42,7 +44,7 @@ public class PlayerBrain : MonoBehaviour
         _moveInput.action.performed += UpdateMove;
         _moveInput.action.canceled += StopMove;
         // Attack
-        //_attackInput.action.started += Attack;
+        _attackInput.action.started += Attack;
     }
 
 
@@ -94,6 +96,7 @@ public class PlayerBrain : MonoBehaviour
         _moveInput.action.started -= UpdateMove;
         _moveInput.action.performed -= UpdateMove;
         _moveInput.action.canceled -= StopMove;
+        _attackInput.action.canceled -= Attack;
     }
 
 
@@ -104,5 +107,10 @@ public class PlayerBrain : MonoBehaviour
     private void StopMove(InputAction.CallbackContext obj)
     {
         _movement.Move(Vector2.zero);
+    }
+
+    private void Attack(InputAction.CallbackContext obj)
+    {
+        _attack.Shoot();
     }
 }
