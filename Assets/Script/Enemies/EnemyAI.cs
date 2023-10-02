@@ -14,8 +14,7 @@ namespace Game
         
         //== Properties ============================================
         public Transform PlayerTransform { protected get; set; }
-        public Enemy SetEnemy {set { enemy = value; }}
-        protected Enemy GetEnemy => enemy;
+        public Enemy Enemy { protected get { return enemy; } set { enemy = value; } }
         protected float DetectionRadius => detectionRadius;
         protected float NearPlayerRadius => nearPlayerRadius;
         protected Vector2 EnemyToPlayer { get; set; }
