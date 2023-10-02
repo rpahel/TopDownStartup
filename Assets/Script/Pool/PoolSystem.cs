@@ -44,18 +44,13 @@ namespace Game
         
         private void Initialize(Vector2 pos)
         {
-            _actualInitialisable.Initialize();
+            _actualInitialisable.Initialize(pos);
         }
         
-        private void PickUp(IInitialisable objectTo)
+        public void Reset(IInitialisable initialisableObject)
         {
-            
-        }
-        
-        
-        private void Reset()
-        {
-            //reset 
+            _objects.Enqueue(initialisableObject);
+            initialisableObject.Disable();
         }
     }
 }
