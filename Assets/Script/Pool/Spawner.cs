@@ -8,27 +8,19 @@ namespace Game
 {
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private GameObject _objectToInstantiate;
-        [Min(0)]
-        [SerializeField] private int _numberOfInstance;
         
-        
-        public Queue<T>Spawn<T>()
+
+        [SerializeField] private PoolSystem _poolSystem;
+
+
+        private IEnumerator Start()
         {
-            if (_objectToInstantiate == null)
+
+            while (true)
             {
-                throw new ArgumentNullException(name + " Property \"GameObject to instantiate\" can't be null");
+                //_poolSystem.();
+                yield return new WaitForSeconds(1);
             }
-                 
-            Queue<T> _objectQueue = new Queue<T>();
-            for (int i = 0; i < _numberOfInstance; i++)
-            {
-                _objectQueue.Enqueue(Instantiate(_objectToInstantiate, transform).GetComponent<T>());
-            }
-            return _objectQueue;
         }
-        
-        
-        
     }
 }
