@@ -10,7 +10,7 @@ namespace Game
         [SerializeField] private float _enemySpeed;
         [SerializeField] private int _enemyDamage;
         [SerializeField] private float _enemyFireRate; 
-        [SerializeField] private AttackType _enemyType; // Guerrier, Mage, Archer, Corentin, Assassin, Sorceleur...
+        [SerializeField] private AttackType _enemyType; // Guerrier, Mage, Archer, Hector, Assassin, Sorceleur...
         
         //== Properties ============================================
         public string GetName() => _enemyType.ToString();

@@ -9,6 +9,6 @@ namespace Game
         Warrior,
         Mage,
         Archer,
-        PiloteDeChasseX304SpecialisationMecaniqueFurtiveEtAvionsCommerciaux,
+        PiloteDeChasseX304SpecialisationMecaniqueFurtiveEtAvionsCommerciauxChezTales,
     }
 }

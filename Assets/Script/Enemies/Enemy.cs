@@ -45,7 +45,7 @@ namespace Game
             FireRate = _enemyData.GetFireRate();
             AttackType = _enemyData.GetAttackType();
 
-            Pool.Reset(this);
+            Pool.ResetObject(this);
         }
 
         //== Interface Implementations =============================

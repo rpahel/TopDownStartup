@@ -47,7 +47,7 @@ namespace Game
             _actualInitialisable.Initialize(pos);
         }
         
-        public void Reset(IInitialisable initialisableObject)
+        public void ResetObject(IInitialisable initialisableObject)
         {
             _objects.Enqueue(initialisableObject);
             initialisableObject.Disable();

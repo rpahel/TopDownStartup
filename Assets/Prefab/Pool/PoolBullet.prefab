@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6336268453044230491
+--- !u!1 &7266085029444178913
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1699085842344157418}
-  - component: {fileID: -5848943449059857283}
-  - component: {fileID: -5003835956073850545}
+  - component: {fileID: 5550441152630041440}
+  - component: {fileID: 8590500222653960620}
+  - component: {fileID: 5927198941996902155}
   m_Layer: 0
-  m_Name: Pool
+  m_Name: PoolBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1699085842344157418
+--- !u!4 &5550441152630041440
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6336268453044230491}
+  m_GameObject: {fileID: 7266085029444178913}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,30 +33,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5848943449059857283
+--- !u!114 &8590500222653960620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6336268453044230491}
+  m_GameObject: {fileID: 7266085029444178913}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec222aa62e3127e4e884f20550e5a6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToInstantiate: {fileID: 0}
-  _numberOfInstance: 0
---- !u!114 &-5003835956073850545
+  _objectToInstantiate: {fileID: 7713418508482621631, guid: 2c58fff194e9f7946a5fbf7ed18e54d0, type: 3}
+  _numberOfInstance: 2
+--- !u!114 &5927198941996902155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6336268453044230491}
+  m_GameObject: {fileID: 7266085029444178913}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffdda463cc6fb9f4e99c7cc08fdf6132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolSystem: {fileID: 0}
+  _poolSystem: {fileID: 8590500222653960620}
