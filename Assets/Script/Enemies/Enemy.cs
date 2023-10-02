@@ -36,7 +36,16 @@ namespace Game
 
         private void OnDisable()
         {
-            throw new NotImplementedException();
+            if (!_enemyData)
+                throw new NullReferenceException("Enemy " + name + " : _enemyData is null !");
+
+            Health = _enemyData.GetHealth();
+            Speed = _enemyData.GetSpeed();
+            Damage = _enemyData.GetDamage();
+            FireRate = _enemyData.GetFireRate();
+            AttackType = _enemyData.GetAttackType();
+
+            Pool.Reset(this);
         }
 
         //== Interface Implementations =============================
