@@ -7,8 +7,9 @@ namespace Game
     {
         //== Fields ================================================
         [SerializeField] private EnemyDataSO _enemyData;
+        [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private EnemyAI _enemyAI;
         
-        private EnemyMovement _enemyMovement;
         private AttackClass _enemyAttack;
         
         //== Properties ============================================
@@ -17,6 +18,7 @@ namespace Game
         public int Damage { get; private set; }
         public float FireRate { get; private set; }
         public AttackType AttackType { get; private set; }
+        public EnemyMovement GetMovement => _enemyMovement;
         
         //== Events ================================================
         public event Action OnDie;
@@ -64,7 +66,7 @@ namespace Game
 
         public PoolSystem Pool { get; set; }
 
-        public void Initialize(Vector2 spawnPos)
+        public void Initialize(Vector2 spawnPos, Transform playerTransform = null)
         {
             if (!_enemyData)
                 throw new NullReferenceException("Enemy " + name + " : _enemyData is null !");
@@ -85,6 +87,7 @@ namespace Game
             _enemyAttack = new EnemyAttack();
 
             transform.position = spawnPos;
+            _enemyAI.PlayerTransform = playerTransform;
         }
 
         public void Disable()
@@ -123,7 +126,14 @@ namespace Game
         }
         
         //== Private Methods =======================================
-        private void PlayDeathAnimation(){}
-        private void PlayDeathSound(){}
+        private void PlayDeathAnimation()
+        {
+            Debug.Log(name + " : *Dies*");
+        }
+
+        private void PlayDeathSound()
+        {
+            Debug.Log(name + " : Eurgh !");
+        }
     }
 }
