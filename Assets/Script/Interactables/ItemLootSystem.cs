@@ -4,9 +4,8 @@ using UnityEngine;
 
 namespace Game
 {
-    [System.Serializable]
-    public class Item : ScriptableObject
+    public class ItemLootSystem : LootSystem<Item>
     {
-
+        
     }
 }
