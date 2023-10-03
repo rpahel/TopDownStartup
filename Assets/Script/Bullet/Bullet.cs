@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.DOTweenEditor;
@@ -9,10 +10,15 @@ namespace Game
     public class Bullet : MonoBehaviour, IInitialisable, IProjectile
     {
         public PoolSystem Pool { get; set; }
-        [SerializeField] float _speed = 100f;
-        public void Initialize(Vector2 pos)
+        [SerializeField] float _speed = 50f;
+        public void Initialize(Vector2 pos, Transform playerTransform)
         {
-            
+            gameObject.SetActive(true);
+        }
+
+        private void Update()
+        {
+            transform.Translate(Vector3.right*Time.deltaTime*_speed);
         }
 
         public void Disable()

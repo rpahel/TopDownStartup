@@ -7,9 +7,10 @@ namespace Game
 {
     public class PoolSystem : MonoBehaviour 
     {
-        private Queue<IInitialisable> _objects;
+        private Queue<IInitialisable> _objects =  new Queue<IInitialisable>();
         //private Queue<GameObject> _objects;
         //[SerializeField] private Spawner _spawner;
+        [SerializeField] private Transform _playerTransform;
         
         [SerializeField] private GameObject _objectToInstantiate;
         [Min(0)]
@@ -37,10 +38,10 @@ namespace Game
             return _objectQueue;
         }
         
-        public void Initialize(Vector2 pos, Transform playerTransform = null)
+        public void Initialize(Vector2 pos)
         {
             _actualInitialisable = _objects.Dequeue();
-            _actualInitialisable.Initialize(pos);
+            _actualInitialisable.Initialize(pos, _playerTransform);
         }
         
         public void ResetObject(IInitialisable initialisableObject)

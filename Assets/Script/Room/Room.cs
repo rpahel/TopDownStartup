@@ -8,7 +8,7 @@ namespace Game
     public class Room : MonoBehaviour
     {
         [SerializeField] private Collider2D _entry;
-        [SerializeField] private Collider2D _exit;
+        [SerializeField] private Collider2D[] _exits;
 
         [SerializeField] private PoolSystem _pool;
         [SerializeField] private int _numberOfArcher;
@@ -19,9 +19,13 @@ namespace Game
         private void Start()
         {
             _numberOfEnemies = _numberOfArcher + _numberOfWarriors;
+            foreach (var EXIT in _exits)
+            {
+                EXIT.gameObject.SetActive(false);
+            }
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
@@ -29,7 +33,10 @@ namespace Game
                 _pool.Initialize(Vector2.zero);
                 
                 //Activate Exit Door
-                _exit.gameObject.SetActive(true);
+                foreach (var EXIT in _exits)
+                {
+                    EXIT.gameObject.SetActive(true);
+                }
             }
         }
 
