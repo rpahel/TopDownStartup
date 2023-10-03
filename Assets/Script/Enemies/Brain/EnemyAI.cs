@@ -6,7 +6,6 @@ namespace Game
     {
         //== Fields ================================================
         [SerializeField] private Enemy enemy;
-        [SerializeField] private Transform playerTransform;
         [SerializeField] private float detectionRadius;
         [SerializeField] private float nearPlayerRadius;
         
@@ -20,10 +19,10 @@ namespace Game
         //== Protected Methods =======================================
         protected bool IsPlayerInRange(float range)
         {
-            if (!playerTransform)
+            if (!PlayerTransform)
                 return false;
             
-            EnemyToPlayer = playerTransform.position - transform.position;
+            EnemyToPlayer = PlayerTransform.position - transform.position;
             return EnemyToPlayer.sqrMagnitude < (range * range);
         }
         

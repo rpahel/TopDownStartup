@@ -8,6 +8,7 @@ namespace Game
         //== Fields ================================================
         [SerializeField] private EnemyDataSO _enemyData;
         [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private EnemyAI _enemyAI;
         
         private AttackClass _enemyAttack;
         
@@ -65,7 +66,7 @@ namespace Game
 
         public PoolSystem Pool { get; set; }
 
-        public void Initialize(Vector2 spawnPos)
+        public void Initialize(Vector2 spawnPos, Transform playerTransform = null)
         {
             if (!_enemyData)
                 throw new NullReferenceException("Enemy " + name + " : _enemyData is null !");
@@ -86,6 +87,7 @@ namespace Game
             _enemyAttack = new EnemyAttack();
 
             transform.position = spawnPos;
+            _enemyAI.PlayerTransform = playerTransform;
         }
 
         public void Disable()
