@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Game;
 
-public class KevinHealth : MonoBehaviour, IKevinHealth
+public class Health : MonoBehaviour, IHealth
 {
-    [SerializeField] int _maxHealth;
+    [SerializeField] private Alterable<int> _maxHealth;
 
     /// <summary>
     /// coucou
@@ -19,13 +20,13 @@ public class KevinHealth : MonoBehaviour, IKevinHealth
         private set;
     }
     public bool IsDead => CurrentHealth > 0;
-    public int MaxHealth { get => _maxHealth; }
+    public Alterable<int> MaxHealth { get => _maxHealth ??= new Alterable<int>(CurrentHealth); }
 
     public event Action<int> OnDamage;
     public event Action<int> OnRegen;
     public event Action OnDie;
 
-    public void Damage(int amount)
+    public void TakeDamage(int amount)
     {
         Assert.IsTrue(amount >= 0);
         if (IsDead) return;
@@ -39,7 +40,7 @@ public class KevinHealth : MonoBehaviour, IKevinHealth
         if (IsDead) return;
         InternalRegen(amount);
     }
-    public void Kill()
+    public void Die()
     {
         if (IsDead) return;
         InternalDie();

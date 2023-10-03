@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 public class Entity : MonoBehaviour
 {
-    [FormerlySerializedAs("_health")] [SerializeField, Required("nop")] KevinHealth kevinHealth;
+    [FormerlySerializedAs("_health")] [SerializeField, Required("nop")] Health Health;
 
 
 
