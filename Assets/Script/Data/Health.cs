@@ -58,7 +58,7 @@ public class Health : MonoBehaviour, IHealth
         Assert.IsTrue(amount >= 0);
 
         var old = CurrentHealth;
-        CurrentHealth = Mathf.Min(_maxHealth, CurrentHealth + amount);
+        CurrentHealth = Mathf.Min(_maxHealth.CalculateValue(), CurrentHealth + amount);
         OnRegen?.Invoke(CurrentHealth-old);
     }
     void InternalDie()
