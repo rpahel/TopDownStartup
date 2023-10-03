@@ -88,6 +88,7 @@ namespace Game
 
             transform.position = spawnPos;
             _enemyAI.PlayerTransform = playerTransform;
+            gameObject.SetActive(true);
         }
 
         public void Disable()
