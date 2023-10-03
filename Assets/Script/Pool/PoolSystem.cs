@@ -33,7 +33,10 @@ namespace Game
             Queue<IInitialisable> _objectQueue = new Queue<IInitialisable>();
             for (int i = 0; i < _numberOfInstance; i++)
             {
-                _objectQueue.Enqueue(Instantiate(_objectToInstantiate, transform).GetComponent<IInitialisable>());
+                IInitialisable initialisable = Instantiate(_objectToInstantiate, transform).GetComponent<IInitialisable>();
+                initialisable.Pool = this;
+                _objectQueue.Enqueue(initialisable);
+                
             }
             return _objectQueue;
         }
@@ -43,11 +46,17 @@ namespace Game
             _actualInitialisable = _objects.Dequeue();
             _actualInitialisable.Initialize(pos, _playerTransform);
         }
+
+        public IInitialisable GetObject()
+        {
+            _actualInitialisable = _objects.Dequeue();
+            return _actualInitialisable;
+        }
+        
         
         public void ResetObject(IInitialisable initialisableObject)
         {
             _objects.Enqueue(initialisableObject);
-            initialisableObject.Disable();
         }
     }
 }

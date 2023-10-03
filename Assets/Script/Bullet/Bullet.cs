@@ -14,8 +14,9 @@ namespace Game
         private Vector2 direction;
         public void Initialize(Vector2 pos, Transform playerTransform)
         {
+            Debug.Log(playerTransform);
             transform.position = playerTransform.position;
-            direction = pos.normalized - new Vector2(playerTransform.position.x, playerTransform.position.y);
+            direction = (pos - (Vector2)transform.position).normalized;
             gameObject.SetActive(true);
         }
 
@@ -26,7 +27,10 @@ namespace Game
 
         public void Disable()
         {
-            
+            transform.position = Vector3.zero;
+            direction = Vector2.zero;
+            Pool.ResetObject(this);
+            gameObject.SetActive(false);
         }
 
         public void Hit()
@@ -38,11 +42,13 @@ namespace Game
         {
             
         }
-        
-        private void OnTriggerEnter2D(Collider2D collision)
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-        
-            
+            if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            {
+                Disable();
+            }
         }
     }
 }

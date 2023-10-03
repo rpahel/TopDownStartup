@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec222aa62e3127e4e884f20550e5a6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 0}
   _objectToInstantiate: {fileID: 0}
   _numberOfInstance: 0
 --- !u!114 &-5003835956073850545
