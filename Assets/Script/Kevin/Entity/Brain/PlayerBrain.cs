@@ -1,3 +1,4 @@
+using Game;
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,9 +32,11 @@ public static class AnimationExtension
 public class PlayerBrain : MonoBehaviour
 {
     [SerializeField, BoxGroup("Dependencies")] EntityMovement _movement;
+    [SerializeField, BoxGroup("Dependencies")] PlayerInteraction _interaction;
 
     [SerializeField, BoxGroup("Input")] InputActionProperty _moveInput;
     [SerializeField, BoxGroup("Input")] InputActionProperty _attackInput;
+    [SerializeField, BoxGroup("Input")] InputActionProperty _interactionInput;
 
     private void Start()
     {
@@ -43,24 +46,9 @@ public class PlayerBrain : MonoBehaviour
         _moveInput.action.canceled += StopMove;
         // Attack
         //_attackInput.action.started += Attack;
+        // Interaction
+        _interactionInput.action.started += Interact;
     }
-
-
-
-
-    void run()
-    {
-        var speedbase = 10;
-        var armurespeed = 1.3;
-        var coffeefactor = 1.2f;
-
-
-        var s = speedbase * armurespeed * coffeefactor;
-    }
-
-
-
-
 
     Coroutine _maCoroutine;
     public void RunCoucou()
@@ -94,6 +82,8 @@ public class PlayerBrain : MonoBehaviour
         _moveInput.action.started -= UpdateMove;
         _moveInput.action.performed -= UpdateMove;
         _moveInput.action.canceled -= StopMove;
+        // Interaction
+        _interactionInput.action.started -= Interact;
     }
 
 
@@ -104,5 +94,9 @@ public class PlayerBrain : MonoBehaviour
     private void StopMove(InputAction.CallbackContext obj)
     {
         _movement.Move(Vector2.zero);
+    }
+    private void Interact(InputAction.CallbackContext obj)
+    {
+        _interaction.Interact();
     }
 }
