@@ -37,7 +37,7 @@ namespace Game
             return _objectQueue;
         }
         
-        public void Initialize(Vector2 pos)
+        public void Initialize(Vector2 pos, Transform playerTransform = null)
         {
             _actualInitialisable = _objects.Dequeue();
             _actualInitialisable.Initialize(pos);
