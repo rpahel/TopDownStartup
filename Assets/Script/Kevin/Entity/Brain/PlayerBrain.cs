@@ -49,7 +49,6 @@ public class PlayerBrain : MonoBehaviour
         _moveInput.action.canceled += StopMove;
         // Attack
         _attackInput.action.started += Attack;
-        //_attackInput.action.started += Attack;
         // Interaction
         _interactionInput.action.started += Interact;
 

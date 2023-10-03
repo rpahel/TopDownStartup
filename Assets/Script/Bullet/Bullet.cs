@@ -11,14 +11,17 @@ namespace Game
     {
         public PoolSystem Pool { get; set; }
         [SerializeField] float _speed = 50f;
+        private Vector2 direction;
         public void Initialize(Vector2 pos, Transform playerTransform)
         {
+            transform.position = playerTransform.position;
+            direction = pos.normalized - new Vector2(playerTransform.position.x, playerTransform.position.y);
             gameObject.SetActive(true);
         }
 
         private void Update()
         {
-            transform.Translate(Vector3.right*Time.deltaTime*_speed);
+            transform.Translate(direction*Time.deltaTime*_speed);
         }
 
         public void Disable()

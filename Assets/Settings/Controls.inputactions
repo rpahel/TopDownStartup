@@ -7,12 +7,12 @@
             "actions": [
                 {
                     "name": "CursorPosition",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "b8a5408d-613d-4bc0-b83f-ffa0eab8874c",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "CursorDirection",
@@ -36,6 +36,15 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "16e45460-23b4-4a00-b8b1-aedb451ef95c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "dc0c383b-c68e-4350-a157-5588e3bc6a94",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -194,6 +203,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f68c7855-406c-43c3-bcb7-7c3389b3952c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

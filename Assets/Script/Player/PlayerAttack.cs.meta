@@ -3,7 +3,10 @@ guid: 93ae816621e38ab4888fc9ae7a3a3a8d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _mousePosition: {fileID: 7186546075398149120, guid: 55e29d63565f40741bca45a1cf06460e, type: 3}
+  - _referenceCamera: {instanceID: 0}
+  - pool: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
