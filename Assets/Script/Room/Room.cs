@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Game
 {
@@ -9,6 +10,8 @@ namespace Game
     {
         [SerializeField] private Collider2D _entry;
         [SerializeField] private Collider2D[] _exits;
+
+        [SerializeField] private Transform[] _spawns;
 
         [SerializeField] private PoolSystem _archerPool;
         [SerializeField] private PoolSystem _warriorPool;
@@ -31,15 +34,18 @@ namespace Game
             if (other.CompareTag("Player"))
             {
                 //Spawn des enemy
-                
+                if (_spawns.Length == 0)
+                {
+                    throw new ArgumentNullException(name + " The number of Spawns point is 0 ");
+                }
                 for (int i = 0; i < _numberOfArcher; i++)
                 {
-                    _archerPool.Initialize(Vector2.zero);
+                    _archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
                 }
                 
                 for (int i = 0; i < _numberOfWarriors; i++)
                 {
-                    _warriorPool.Initialize(Vector2.zero);
+                    _archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
                 }
                 
                 
