@@ -1,34 +1,33 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using DG.DOTweenEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Game
 {
     public class Bullet : MonoBehaviour, IInitialisable, IProjectile
     {
-        public PoolSystem Pool { get; set; }
         [SerializeField] float _speed = 50f;
-        private Vector2 direction;
-        public void Initialize(Vector2 pos, Transform playerTransform)
+        private Vector2 _direction;
+        private GameObject _owner;
+        private int _damageAmount;
+        
+        public PoolSystem Pool { get; set; }
+        
+        public void Initialize(Vector2 targetPos, Transform playerTransform)
         {
-            Debug.Log(playerTransform);
             transform.position = playerTransform.position;
-            direction = (pos - (Vector2)transform.position).normalized;
+            _direction = (targetPos - (Vector2)transform.position).normalized;
+            _owner = playerTransform.gameObject;
             gameObject.SetActive(true);
         }
 
         private void Update()
         {
-            transform.Translate(direction*Time.deltaTime*_speed);
+            transform.Translate(Time.deltaTime * _speed * _direction);
         }
 
         public void Disable()
         {
             transform.position = Vector3.zero;
-            direction = Vector2.zero;
+            _direction = Vector2.zero;
             Pool.ResetObject(this);
             gameObject.SetActive(false);
         }
@@ -47,6 +46,26 @@ namespace Game
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
             {
+                Disable();
+            }
+            else if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                if(_owner.layer == LayerMask.NameToLayer("Enemy"))
+                    return;
+                
+                if(other.TryGetComponent(out Enemy enemy))
+                    enemy.TakeDamage(_damageAmount);
+                
+                Disable();
+            }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                if(_owner.layer == LayerMask.NameToLayer("Player"))
+                    return;
+                
+                if (other.TryGetComponent(out Enemy enemy))
+                    enemy.TakeDamage(_damageAmount);
+                
                 Disable();
             }
         }

@@ -9,6 +9,11 @@ namespace Game
             {
                 Enemy.GetMovement.ContinuousMove(EnemyToPlayer);
             }
+
+            if (IsPlayerInRange(NearPlayerRadius))
+            {
+                Enemy.GetAttack.Attack();
+            }
         }
     }
 }

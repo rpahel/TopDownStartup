@@ -3,14 +3,13 @@ using UnityEngine;
 
 namespace Game
 {
-    public class Enemy : MonoBehaviour, IHealth, ICloneable, IAttack, IInitialisable
+    public class Enemy : MonoBehaviour, IHealth, ICloneable, IInitialisable
     {
         //== Fields ================================================
         [SerializeField] private EnemyDataSO _enemyData;
         [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private AttackClass _enemyAttack;
         [SerializeField] private EnemyAI _enemyAI;
-        
-        private AttackClass _enemyAttack;
         
         //== Properties ============================================
         public int Health { get; private set; }
@@ -19,6 +18,7 @@ namespace Game
         public float FireRate { get; private set; }
         public AttackType AttackType { get; private set; }
         public EnemyMovement GetMovement => _enemyMovement;
+        public AttackClass GetAttack => _enemyAttack;
         
         //== Events ================================================
         public event Action OnDie;
@@ -28,12 +28,14 @@ namespace Game
         {
             OnDie += PlayDeathAnimation;
             OnDie += PlayDeathSound;
+            OnDie += DisableSelf;
         }
 
         private void OnDestroy()
         {
             OnDie -= PlayDeathAnimation;
             OnDie -= PlayDeathSound;
+            OnDie -= DisableSelf;
         }
 
         private void OnDisable()
@@ -82,10 +84,7 @@ namespace Game
                 FireRate = _enemyData.GetFireRate();
                 AttackType = _enemyData.GetAttackType();
             }
-
-            // TODO : Heritage (EnemyAttackArcher, Warrior, etc) pareil pour movement.
-            _enemyAttack = new EnemyAttack();
-
+            
             transform.position = spawnPos;
             _enemyAI.PlayerTransform = playerTransform;
             gameObject.SetActive(true);
@@ -96,10 +95,6 @@ namespace Game
             gameObject.SetActive(false);
         }
         
-        
-        // Todo : Appeler un methode de la class EnemyAttack
-        public void Attack(){}
-
         public void TakeDamage(int damage)
         {
             Health -= damage;
@@ -109,7 +104,7 @@ namespace Game
 
         public void Regen(int amount)
         {
-            throw new NotImplementedException();
+            Health = Mathf.Clamp(Health + amount, Health, _enemyData.GetHealth());
         }
 
         public void Die() => OnDie?.Invoke();
@@ -135,6 +130,11 @@ namespace Game
         private void PlayDeathSound()
         {
             Debug.Log(name + " : Eurgh !");
+        }
+
+        private void DisableSelf()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

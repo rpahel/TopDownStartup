@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1196330432224164271}
   - component: {fileID: 9003162554617043935}
   - component: {fileID: 7461032740672174270}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: 50dc672381d091149b3f95646a6c1a57, type: 2}
   _enemyMovement: {fileID: 6762036805756668543}
+  _enemyAttack: {fileID: 4177174276716855380}
   _enemyAI: {fileID: 7126401759012205271}
 --- !u!58 &9003162554617043935
 CircleCollider2D:
@@ -124,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3861997568310910587}
   - component: {fileID: 6762036805756668543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,11 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414898b6fbaf3c446a1cd319efd52600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1196330432224164271}
-  rb2D: {fileID: 7461032740672174270}
-  hitBox: {fileID: 9003162554617043935}
-  maxSpeed: 40
-  acceleration: 7
+  _rb2D: {fileID: 7461032740672174270}
+  _maxSpeed: 40
+  _acceleration: 5
 --- !u!1 &6841505799843749291
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +172,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2257853941030549501}
   - component: {fileID: 7126401759012205271}
-  m_Layer: 0
+  - component: {fileID: 4177174276716855380}
+  m_Layer: 6
   m_Name: Brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,9 +207,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2610b4b328540804dbd964c7827f552f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1196330432224164271}
-  detectionRadius: 7
-  nearPlayerRadius: 3
+  _enemy: {fileID: 1196330432224164271}
+  _detectionRadius: 6
+  _nearPlayerRadius: 2.2
+--- !u!114 &4177174276716855380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841505799843749291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c010f89a4afe5224a824fb4123315c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _coolDown: 2
+  _range: 6
 --- !u!1 &7614487971335152894
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3778601226093569643}
   - component: {fileID: 2076013301554405674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}

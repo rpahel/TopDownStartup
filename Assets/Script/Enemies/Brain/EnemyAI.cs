@@ -5,15 +5,15 @@ namespace Game
     public class EnemyAI : MonoBehaviour
     {
         //== Fields ================================================
-        [SerializeField] private Enemy enemy;
-        [SerializeField] private float detectionRadius;
-        [SerializeField] private float nearPlayerRadius;
+        [SerializeField] private Enemy _enemy;
+        [SerializeField] private float _detectionRadius;
+        [SerializeField] private float _nearPlayerRadius;
         
         //== Properties ============================================
         public Transform PlayerTransform { protected get; set; }
-        public Enemy Enemy { protected get { return enemy; } set { enemy = value; } }
-        protected float DetectionRadius => detectionRadius;
-        protected float NearPlayerRadius => nearPlayerRadius;
+        public Enemy Enemy { protected get { return _enemy; } set { _enemy = value; } }
+        protected float DetectionRadius => _detectionRadius;
+        protected float NearPlayerRadius => _nearPlayerRadius;
         protected Vector2 EnemyToPlayer { get; private set; }
         
         //== Protected Methods =======================================
@@ -31,9 +31,9 @@ namespace Game
         {
             Vector2 selfPos = transform.position;
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(selfPos, nearPlayerRadius);
+            Gizmos.DrawWireSphere(selfPos, _nearPlayerRadius);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(selfPos, detectionRadius);
+            Gizmos.DrawWireSphere(selfPos, _detectionRadius);
         }
     }
 }
