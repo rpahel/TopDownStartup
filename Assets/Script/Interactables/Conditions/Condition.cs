@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
 {
     [System.Serializable]
-    public abstract class Condition
+    public abstract class Condition : MonoBehaviour
     {
         public abstract bool IsConditionMet();
     }

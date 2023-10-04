@@ -23,6 +23,8 @@ namespace Game
                 for(int i = 0; i < Conditions.Count; i++)
                 {
                     conditionMet = Conditions[i].IsConditionMet();
+                    if (!conditionMet)
+                        return false;
                 }
 
                 return conditionMet;
@@ -35,6 +37,7 @@ namespace Game
             if(IsInteractable())
             {
                 _onTryInteract?.Invoke();
+                Debug.Log("Interacted with : " + gameObject.name);
                 return true;
             }
 
