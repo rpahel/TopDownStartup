@@ -18,6 +18,8 @@ namespace Game
         [SerializeField] private int _numberOfArcher;
         [SerializeField] private int _numberOfWarriors;
 
+        private List<Enemy> _enemies = new List<Enemy>();
+
         [SerializeField] private UnityEvent OnStartRoom;
         [SerializeField] private UnityEvent OnClearRoom;
         
@@ -48,13 +50,19 @@ namespace Game
                 
                 for (int i = 0; i < _numberOfArcher; i++)
                 {
-                    _archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
+                    Enemy newEnemy = (Enemy)_archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
+                    _enemies.Add(newEnemy);
+                    newEnemy.OnDie += EnemyDies;
+                    
                 }
                 
                 for (int i = 0; i < _numberOfWarriors; i++)
                 {
-                    _warriorPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
+                    Enemy newEnemy = (Enemy)_warriorPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
+                    _enemies.Add(newEnemy);
+                    newEnemy.OnDie += EnemyDies;
                 }
+
                 
                 //Activate Exit Door
                 foreach (var EXIT in _exits)
@@ -76,7 +84,15 @@ namespace Game
 
         private void EnemyDies()
         {
-            //Check a la mort d'un enemi sur le _numberofEnemies == 0 et si oui Ouvrir la porte
+            if (_numberOfEnemies >= 0)
+            {
+                _numberOfEnemies--;
+            }
+            else
+            {
+                RoomCleared();
+            }
+            
         }
         
         

@@ -41,10 +41,11 @@ namespace Game
             return _objectQueue;
         }
         
-        public void Initialize(Vector2 pos)
+        public IInitialisable Initialize(Vector2 pos)
         {
             _actualInitialisable = _objects.Dequeue();
             _actualInitialisable.Initialize(pos, _playerTransform);
+            return _actualInitialisable;
         }
 
         public IInitialisable GetObject()
