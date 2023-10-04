@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3347543616739314965}
   - component: {fileID: 2421128092144587941}
   - component: {fileID: 8199330076990476348}
+  - component: {fileID: 8894242988290185686}
   m_Layer: 0
   m_Name: Studded_Wooden_Chest
   m_TagString: Untagged
@@ -147,7 +148,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onTryInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3347543616739314965}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: -4793930135710869741, guid: f7b37b91088c7d44b98c5e710477bd39, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4614897403633661020}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Conditions:
+  - {fileID: 8894242988290185686}
+--- !u!114 &8894242988290185686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347543616739314971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d2b223c7b2ce044a130688d9f5b2ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5817154216154472606
 GameObject:
   m_ObjectHideFlags: 0

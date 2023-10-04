@@ -6,19 +6,14 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Game;
+using System.Security.Cryptography;
 
 public class Health : MonoBehaviour, IHealth
 {
     [SerializeField] private Alterable<int> _maxHealth;
 
-    /// <summary>
-    /// coucou
-    /// </summary>
-    public int CurrentHealth 
-    {
-        get;
-        private set;
-    }
+    public int CurrentHealth { get; private set; }
+
     public bool IsDead => CurrentHealth > 0;
     public Alterable<int> MaxHealth { get => _maxHealth ??= new Alterable<int>(CurrentHealth); }
 
