@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = System.Random;
 
 namespace Game
@@ -9,13 +10,17 @@ namespace Game
     public class Room : MonoBehaviour
     {
         [SerializeField] private Collider2D[] _exits;
-
+        
         [SerializeField] private Transform[] _spawns;
 
         [SerializeField] private PoolSystem _archerPool;
         [SerializeField] private PoolSystem _warriorPool;
         [SerializeField] private int _numberOfArcher;
         [SerializeField] private int _numberOfWarriors;
+
+        [SerializeField] private UnityEvent OnStartRoom;
+        [SerializeField] private UnityEvent OnClearRoom;
+        
 
         private float _numberOfEnemies;
 
@@ -37,6 +42,10 @@ namespace Game
                 {
                     throw new ArgumentNullException(name + " The number of Spawns point is 0 ");
                 }
+                
+                //Event VFX / Audio
+                OnStartRoom.Invoke();
+                
                 for (int i = 0; i < _numberOfArcher; i++)
                 {
                     _archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
@@ -44,15 +53,24 @@ namespace Game
                 
                 for (int i = 0; i < _numberOfWarriors; i++)
                 {
-                    _archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
+                    _warriorPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
                 }
-                
                 
                 //Activate Exit Door
                 foreach (var EXIT in _exits)
                 {
                     EXIT.gameObject.SetActive(true);
                 }
+            }
+        }
+
+        private void RoomCleared()
+        {
+            //Event VFX / Audio
+            OnClearRoom.Invoke();
+            foreach (var EXIT in _exits)
+            {
+                EXIT.gameObject.SetActive(false);
             }
         }
 
