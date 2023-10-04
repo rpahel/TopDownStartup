@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game
 {
     public class VFXManager : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem _hitParticles;
+        [FormerlySerializedAs("_hitParticles")] [SerializeField] private ParticleSystem _deathParticles;
         
         private ParticleSystemStopBehavior _stopBehavior = ParticleSystemStopBehavior.StopEmitting;
 
@@ -16,7 +17,7 @@ namespace Game
 
         private void Awake()
         {
-            if (_instance != null)
+            if (_instance == null)
             {
                 _instance = this;
             }
@@ -27,10 +28,10 @@ namespace Game
             
         }
 
-        public void HitVFX(Transform position)
+        public void DeathVFX(Transform position)
         {
-            _hitParticles.transform.position = position.position;
-            _hitParticles.Play();
+            _deathParticles.transform.position = position.position;
+            _deathParticles.Play();
         }
     }
 }

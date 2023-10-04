@@ -46,6 +46,8 @@ namespace Game
             Damage = _enemyData.GetDamage();
             FireRate = _enemyData.GetFireRate();
             AttackType = _enemyData.GetAttackType();
+            
+            VFXManager.Instance.DeathVFX(transform);
 
             Pool.ResetObject(this);
         }
