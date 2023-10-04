@@ -33,9 +33,7 @@ namespace Game
 
         private void OnDestroy()
         {
-            OnDie -= PlayDeathAnimation;
-            OnDie -= PlayDeathSound;
-            OnDie -= DisableSelf;
+            OnDie = null;
         }
 
         private void OnDisable()

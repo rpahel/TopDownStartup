@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3417738282395081632}
   - component: {fileID: 2750717334413120766}
   - component: {fileID: 6521041082167087694}
+  - component: {fileID: 1133684246896514222}
   m_Layer: 0
   m_Name: Entity
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bdfebef2da1724b9dfb4d6a11522ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kevinHealth: {fileID: 2750717334413120766}
+  Health: {fileID: 2750717334413120766}
 --- !u!114 &2750717334413120766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +63,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b69b09d4868112469e5ddd8ddfbaca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
 --- !u!50 &6521041082167087694
 Rigidbody2D:
   serializedVersion: 4
@@ -90,6 +90,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1133684246896514222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614539736087202569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728b9f69e69c71448bd6c5960ec4dc69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
 --- !u!1 &1228605993449745919
 GameObject:
   m_ObjectHideFlags: 0

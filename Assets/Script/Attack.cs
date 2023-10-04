@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public abstract class AttackClass : MonoBehaviour, IAttack
+    public abstract class AttackClass : MonoBehaviour, IAttack, IDamager
     {
         [SerializeField] private int _damage;
         [SerializeField] private float _coolDown;
