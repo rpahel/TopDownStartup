@@ -12,7 +12,7 @@ namespace Game
         private Coroutine _attackCooldownCoroutine;
         private bool _canAttack;
 
-        public int Damage => _damage;
+        public int GetDamage => _damage;
         public float CoolDown => _coolDown;
         public float Range => _range;
         public bool CanAttack => _canAttack;

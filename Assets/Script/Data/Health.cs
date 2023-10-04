@@ -26,6 +26,8 @@ public class Health : MonoBehaviour, IHealth
         Assert.IsTrue(amount >= 0);
         if (IsDead) return;
 
+        Debug.Log(name + " Damage received : " + amount);
+
         CurrentHealth = Mathf.Max(0, CurrentHealth - amount);
         OnDamage?.Invoke(amount);
     }

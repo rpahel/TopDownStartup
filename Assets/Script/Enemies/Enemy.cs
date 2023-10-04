@@ -97,6 +97,7 @@ namespace Game
         
         public void TakeDamage(int damage)
         {
+            Debug.Log(name + " Damage received : " + damage);
             Health -= damage;
             if (Health <= 0)
                 Die();
