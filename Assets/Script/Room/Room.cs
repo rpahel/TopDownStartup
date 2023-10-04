@@ -8,7 +8,6 @@ namespace Game
 {
     public class Room : MonoBehaviour
     {
-        [SerializeField] private Collider2D _entry;
         [SerializeField] private Collider2D[] _exits;
 
         [SerializeField] private Transform[] _spawns;

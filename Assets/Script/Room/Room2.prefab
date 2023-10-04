@@ -129,9 +129,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae40e5971abbcb4486489a8c97d2174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entry: {fileID: 7841362787767080253}
-  _exits: []
-  _spawns: []
+  _exits:
+  - {fileID: 5957672153048639499}
+  - {fileID: 3671287228035057659}
+  - {fileID: 6364615655700590042}
+  - {fileID: 7841362787767080253}
+  _spawns:
+  - {fileID: 8678427591539445843}
+  - {fileID: 475515720658828623}
+  - {fileID: 1692267481789293098}
   _archerPool: {fileID: 0}
   _warriorPool: {fileID: 0}
   _numberOfArcher: 1
@@ -331,7 +337,7 @@ GameObject:
   - component: {fileID: 7918009048724960338}
   - component: {fileID: 7841362787767080253}
   m_Layer: 0
-  m_Name: Entry
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +387,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.53430223, y: -0.6873212}
