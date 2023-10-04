@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: RawPlayerStats
   m_EditorClassIdentifier: 
   _baseFireRate: 0
-  _kevinHealth: {fileID: 0}
+  _health: {fileID: 0}
+  _damage: 2

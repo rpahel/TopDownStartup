@@ -16,6 +16,10 @@ namespace Game
             transform.position = playerTransform.position;
             _direction = (targetPos - (Vector2)transform.position).normalized;
             _owner = playerTransform.gameObject;
+
+            if (_owner.TryGetComponent(out IDamager damager))
+                _damageAmount = damager.GetDamage;
+            
             gameObject.SetActive(true);
         }
 
@@ -63,8 +67,8 @@ namespace Game
                 if(_owner.layer == LayerMask.NameToLayer("Player"))
                     return;
                 
-                if (other.TryGetComponent(out Enemy enemy))
-                    enemy.TakeDamage(_damageAmount);
+                if (other.TryGetComponent(out Health health))
+                    health.TakeDamage(_damageAmount);
                 
                 Disable();
             }
