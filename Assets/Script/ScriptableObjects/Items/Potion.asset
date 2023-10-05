@@ -13,10 +13,4 @@ MonoBehaviour:
   m_Name: Potion
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 8992086357480147367, guid: a7b34a0e6b6d7a64e9e06b0012269e73, type: 3}
-  _modifiers:
-  - _amount: 2
-    _weight: 1
-    _modifier: {fileID: 11400000, guid: 668cf31e6247615489c066881dd8d61e, type: 2}
-  - _amount: 1.2
-    _weight: 2
-    _modifier: {fileID: 11400000, guid: 9d3bb9aada5a8ef4b8ccaeceb8421ad9, type: 2}
+  _modifiers: []
