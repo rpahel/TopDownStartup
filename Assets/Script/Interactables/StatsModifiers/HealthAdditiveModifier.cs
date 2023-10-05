@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
-    [CreateAssetMenu(menuName = "StatsModifier/AdditiveModifier")]
-    public class AdditiveModifier : StatsModifier
+    public class HealthAdditiveModifier : StatsModifier
     {
         public override float Modify()
         {

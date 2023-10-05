@@ -32,7 +32,8 @@ namespace Game
             {
                 if (obj.gameObject.TryGetComponent<IInteractable>(out interactableobj))
                 {
-                    founds.Add(obj.gameObject);
+                    if(interactableobj.IsInteractable())
+                        founds.Add(obj.gameObject);
                 }
             }
 
