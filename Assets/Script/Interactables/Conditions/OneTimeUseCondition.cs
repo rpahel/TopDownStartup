@@ -2,16 +2,16 @@ namespace Game
 {
     public class OneTimeUseCondition : Condition
     {
-        private bool hasBeenInteracted;
+        private bool hasBeenInteracted = true;
 
         public override bool IsConditionMet()
         {
-            if(!hasBeenInteracted)
-            {
-                hasBeenInteracted = true;
-                return hasBeenInteracted;
-            }
-            return !hasBeenInteracted;
+            return hasBeenInteracted;
+        }
+
+        public void Interacted()
+        {
+            hasBeenInteracted = false;
         }
     }
 }
