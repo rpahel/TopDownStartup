@@ -94,12 +94,14 @@ namespace Game
             if (_numberOfEnemies > 0)
             {
                 _numberOfEnemies--;
+                
             }
-            else 
+            
+            if (_numberOfEnemies == 0)
             {
                 RoomCleared();
             }
-            
+           
         }
         
         
