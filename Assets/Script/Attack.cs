@@ -34,10 +34,7 @@ namespace Game
         public void StartAttackCooldown()
         {
             if (_attackCooldownCoroutine != null)
-            {
-                StopCoroutine(_attackCooldownCoroutine);
-                _attackCooldownCoroutine = null;
-            }
+                return;
 
             _attackCooldownCoroutine = StartCoroutine(AttackCooldownCoroutine());
         }

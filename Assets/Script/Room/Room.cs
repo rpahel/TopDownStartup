@@ -53,7 +53,7 @@ namespace Game
                     Enemy newEnemy = (Enemy)_archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
                     _enemies.Add(newEnemy);
                     newEnemy.OnDie += EnemyDies;
-                    
+                    newEnemy.Room = this;
                 }
                 
                 for (int i = 0; i < _numberOfWarriors; i++)
@@ -61,6 +61,7 @@ namespace Game
                     Enemy newEnemy = (Enemy)_warriorPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
                     _enemies.Add(newEnemy);
                     newEnemy.OnDie += EnemyDies;
+                    newEnemy.Room = this;
                 }
 
                 
@@ -82,7 +83,7 @@ namespace Game
             }
         }
 
-        private void EnemyDies()
+        public void EnemyDies()
         {
             if (_numberOfEnemies >= 0)
             {

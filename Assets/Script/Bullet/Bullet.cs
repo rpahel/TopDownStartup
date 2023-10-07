@@ -10,7 +10,8 @@ namespace Game
         private int _damageAmount;
         
         public PoolSystem Pool { get; set; }
-        
+        public Room Room { get; set; }
+
         public void Initialize(Vector2 targetPos, Transform playerTransform)
         {
             transform.position = playerTransform.position;

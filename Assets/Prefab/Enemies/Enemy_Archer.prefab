@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 7461032740672174270}
-  _maxSpeed: 40
-  _acceleration: 5
+  _maxSpeed: 280
+  _acceleration: 20
 --- !u!1 &6841505799843749291
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 1196330432224164271}
   _detectionRadius: 6
-  _nearPlayerRadius: 2.2
+  _nearPlayerRadius: 3.83
 --- !u!114 &4177174276716855380
 MonoBehaviour:
   m_ObjectHideFlags: 0
