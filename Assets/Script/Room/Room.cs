@@ -22,13 +22,17 @@ namespace Game
 
         [SerializeField] private UnityEvent OnStartRoom;
         [SerializeField] private UnityEvent OnClearRoom;
-        
+
+        private bool isClear;
+        private bool isEntered;
 
         private float _numberOfEnemies;
 
         private void Start()
         {
             _numberOfEnemies = _numberOfArcher + _numberOfWarriors;
+            isClear = false;
+            isEntered = false;
             foreach (var EXIT in _exits)
             {
                 EXIT.gameObject.SetActive(false);
@@ -37,8 +41,9 @@ namespace Game
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") && isClear == false && isEntered == false)
             {
+                isEntered = true;
                 //Spawn des enemy
                 if (_spawns.Length == 0)
                 {
@@ -79,17 +84,18 @@ namespace Game
             OnClearRoom.Invoke();
             foreach (var EXIT in _exits)
             {
+                isClear = false;
                 EXIT.gameObject.SetActive(false);
             }
         }
 
         public void EnemyDies()
         {
-            if (_numberOfEnemies >= 0)
+            if (_numberOfEnemies > 0)
             {
                 _numberOfEnemies--;
             }
-            else
+            else 
             {
                 RoomCleared();
             }
