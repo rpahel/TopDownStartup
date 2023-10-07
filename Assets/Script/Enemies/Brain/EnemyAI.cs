@@ -10,7 +10,7 @@ namespace Game
         [SerializeField] private float _nearPlayerRadius;
         
         //== Properties ============================================
-        public Transform PlayerTransform { protected get; set; }
+        public Transform PlayerTransform { get; set; }
         public Enemy Enemy { protected get { return _enemy; } set { _enemy = value; } }
         protected float DetectionRadius => _detectionRadius;
         protected float NearPlayerRadius => _nearPlayerRadius;

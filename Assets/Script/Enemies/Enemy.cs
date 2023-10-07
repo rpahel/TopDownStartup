@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Linq;
 
 namespace Game
 {
@@ -18,6 +19,7 @@ namespace Game
         public float FireRate { get; private set; }
         public AttackType AttackType { get; private set; }
         public EnemyMovement GetMovement => _enemyMovement;
+        public EnemyAI GetBrain => _enemyAI;
         public AttackClass GetAttack => _enemyAttack;
         
         //== Events ================================================
@@ -29,6 +31,12 @@ namespace Game
             OnDie += PlayDeathAnimation;
             OnDie += PlayDeathSound;
             OnDie += DisableSelf;
+        }
+
+        private void Start()
+        {
+            if(_enemyAttack as EnemyAttack)
+                (_enemyAttack as EnemyAttack).Enemy = this;
         }
 
         private void OnDestroy()
@@ -67,6 +75,7 @@ namespace Game
         }
 
         public PoolSystem Pool { get; set; }
+        public Room Room { get; set; }
 
         public void Initialize(Vector2 spawnPos, Transform playerTransform = null)
         {
@@ -97,7 +106,6 @@ namespace Game
         
         public void TakeDamage(int damage)
         {
-            Debug.Log(name + " Damage received : " + damage);
             Health -= damage;
             if (Health <= 0)
                 Die();
@@ -135,6 +143,7 @@ namespace Game
 
         private void DisableSelf()
         {
+            Room.EnemyDies();
             gameObject.SetActive(false);
         }
     }
