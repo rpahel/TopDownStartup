@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3677908729308922823
 Transform:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 1196330432224164271}
-  _detectionRadius: 6
+  _detectionRadius: 10.32
   _nearPlayerRadius: 3.83
 --- !u!114 &4177174276716855380
 MonoBehaviour:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _coolDown: 2
-  _range: 6
+  _range: 10.3
 --- !u!1 &7614487971335152894
 GameObject:
   m_ObjectHideFlags: 0

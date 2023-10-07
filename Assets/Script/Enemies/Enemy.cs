@@ -33,6 +33,12 @@ namespace Game
             OnDie += DisableSelf;
         }
 
+        private void Start()
+        {
+            if(_enemyAttack as EnemyAttack)
+                (_enemyAttack as EnemyAttack).Enemy = this;
+        }
+
         private void OnDestroy()
         {
             OnDie = null;

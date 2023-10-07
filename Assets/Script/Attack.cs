@@ -8,19 +8,12 @@ namespace Game
     {
         [SerializeField] private int _damage;
         [SerializeField] private float _coolDown;
-        [SerializeField] private float _range;
         private Coroutine _attackCooldownCoroutine;
         private bool _canAttack;
 
         public int GetDamage => _damage;
         public float CoolDown => _coolDown;
-        public float Range => _range;
         public bool CanAttack => _canAttack;
-
-        private void Start()
-        {
-            _canAttack = true;
-        }
 
         private void OnDisable()
         {
@@ -31,11 +24,18 @@ namespace Game
             }
         }
 
+        private void OnEnable()
+        {
+            _canAttack = true;
+        }
+
         public void StartAttackCooldown()
         {
+            _canAttack = false;
+            
             if (_attackCooldownCoroutine != null)
                 return;
-
+            
             _attackCooldownCoroutine = StartCoroutine(AttackCooldownCoroutine());
         }
         
@@ -48,13 +48,7 @@ namespace Game
         {
             yield return new WaitForSeconds(_coolDown);
             _canAttack = true;
-        }
-
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, _range);
+            _attackCooldownCoroutine = null;
         }
     }
 }

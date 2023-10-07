@@ -18,7 +18,7 @@ namespace Game
         {
             if (!CanAttack)
                 return;
-
+            
             if(FireBullet())
                 StartAttackCooldown();
         }
@@ -32,8 +32,9 @@ namespace Game
 
             if (!bullet)
                 return false;
-            
-            bullet.Initialize(base.Enemy.GetBrain.PlayerTransform.position, this.transform);
+
+            if (Enemy)
+                bullet.Initialize(base.Enemy.GetBrain.PlayerTransform.position, this.transform);
 
             return true;
         }
