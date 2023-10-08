@@ -10,17 +10,16 @@ namespace Game
 {
     public class PlayerInteraction : MonoBehaviour
     {
-        [SerializeField, BoxGroup("Dependencies")] private Canvas interactionUI;
-        [SerializeField, BoxGroup("Dependencies")] private PlayerStatsReference playerRef;
+        [SerializeField, BoxGroup("Dependencies")] private Canvas _interactionUI;
 
-        [SerializeField, BoxGroup("Configuration")] private float radius;
-        [SerializeField, BoxGroup("Configuration")] private float scanInterval;
+        [SerializeField, BoxGroup("Configuration")] private float _radius;
+        [SerializeField, BoxGroup("Configuration")] private float _scanInterval;
         
         private IInteractable _current;
 
         IEnumerator Start()
         {
-            var waiter = new WaitForSeconds(scanInterval);
+            var waiter = new WaitForSeconds(_scanInterval);
             while (true)
             {
                 yield return waiter;
@@ -31,7 +30,7 @@ namespace Game
 
         private IInteractable ScanForInteractables()
         {
-            Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radius);
+            Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, _radius);
             IInteractable interactableobj;
             List<GameObject> founds = new ();
             foreach(Collider2D obj in cols) 
@@ -49,7 +48,7 @@ namespace Game
                 objfound = founds.OrderBy(i => Vector3.Distance(transform.position, i.transform.position)).FirstOrDefault()?.GetComponent<IInteractable>();
             }
 
-            interactionUI.gameObject.SetActive(objfound != null);
+            _interactionUI.gameObject.SetActive(objfound != null);
 
             return objfound;
         }

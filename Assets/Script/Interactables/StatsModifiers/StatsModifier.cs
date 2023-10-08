@@ -16,6 +16,8 @@ namespace Game
         protected float amount;
         protected int weight;
 
+        public float Amount => amount;
+
         public virtual float Modify(float a)
         {
             return amount;
@@ -29,8 +31,8 @@ namespace Game
         public StatsModifier GetClone(float cloneAmount, int cloneWeight, Stat stat)
         {
             StatsModifier mod = CreateInstance<StatsModifier>();
-            mod.amount = amount;
-            mod.weight = weight;
+            mod.amount = cloneAmount;
+            mod.weight = cloneWeight;
             mod.statToModify = stat;
             return mod;
         }

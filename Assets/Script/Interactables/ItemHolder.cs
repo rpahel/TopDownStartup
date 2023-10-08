@@ -6,12 +6,13 @@ namespace Game
 {
     public class ItemHolder : MonoBehaviour
     {
-        private Item _items;
-        public Item HeldItem => _items;
+        private Item _item;
+        public Item HeldItem => _item;
 
-        public void GenerateItem(List<StatsModifier> modifiers)
+        public void GenerateItem(List<StatsModifier> modifiers, List<Stat> stats, List<int> weights)
         {
-            Item item = new Item(modifiers);
+            _item = new Item(modifiers, stats, weights);
         }
+
     }
 }
