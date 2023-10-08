@@ -55,18 +55,18 @@ namespace Game
                 
                 for (int i = 0; i < _numberOfArcher; i++)
                 {
-                    Enemy newEnemy = (Enemy)_archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
-                    _enemies.Add(newEnemy);
-                    newEnemy.OnDie += EnemyDies;
-                    newEnemy.Room = this;
+                    Enemy newArcher = (Enemy)_archerPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
+                    _enemies.Add(newArcher);
+                    newArcher.OnDie += EnemyDies;
+                    newArcher.Room = this;
                 }
                 
                 for (int i = 0; i < _numberOfWarriors; i++)
                 {
-                    Enemy newEnemy = (Enemy)_warriorPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
-                    _enemies.Add(newEnemy);
-                    newEnemy.OnDie += EnemyDies;
-                    newEnemy.Room = this;
+                    Enemy newWarrior = (Enemy)_warriorPool.Initialize(_spawns[UnityEngine.Random.Range(0, _spawns.Length)].position);
+                    _enemies.Add(newWarrior);
+                    newWarrior.OnDie += EnemyDies;
+                    newWarrior.Room = this;
                 }
 
                 
@@ -91,17 +91,16 @@ namespace Game
 
         public void EnemyDies()
         {
+            //Debug.Log(_numberOfEnemies);
             if (_numberOfEnemies > 0)
             {
                 _numberOfEnemies--;
-                
             }
             
             if (_numberOfEnemies == 0)
             {
                 RoomCleared();
             }
-           
         }
         
         

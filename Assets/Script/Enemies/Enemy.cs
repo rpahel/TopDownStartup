@@ -144,6 +144,7 @@ namespace Game
         private void DisableSelf()
         {
             Room.EnemyDies();
+            
             gameObject.SetActive(false);
         }
     }
