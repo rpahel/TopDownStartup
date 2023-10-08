@@ -30,7 +30,7 @@ namespace Game
 
         public StatsModifier GetClone(float cloneAmount, int cloneWeight, Stat stat)
         {
-            StatsModifier mod = CreateInstance<StatsModifier>();
+            StatsModifier mod = CreateInstance(GetType()) as StatsModifier;
             mod.amount = cloneAmount;
             mod.weight = cloneWeight;
             mod.statToModify = stat;
