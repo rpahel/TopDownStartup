@@ -4,19 +4,36 @@ using UnityEngine;
 
 namespace Game
 {
-    public abstract class StatsModifier : ScriptableObject
+    public enum Stat
     {
-        private float _amount;
-        private int _weight;
+        FireRate,
+        Damage,
+    }
 
-        public abstract float Modify();
+    public class StatsModifier : ScriptableObject
+    {
+        protected Stat statToModify;
+        protected float amount;
+        protected int weight;
 
-        public StatsModifier GetClone(float amount, int weight)
+        public virtual float Modify(float a)
+        {
+            return amount;
+        }
+
+        public virtual int Modify(int a)
+        {
+            return (int)amount;
+        }
+
+        public StatsModifier GetClone(float cloneAmount, int cloneWeight, Stat stat)
         {
             StatsModifier mod = CreateInstance<StatsModifier>();
-            mod._amount = amount;
-            mod._weight = weight;
+            mod.amount = amount;
+            mod.weight = weight;
+            mod.statToModify = stat;
             return mod;
         }
+
     }
 }

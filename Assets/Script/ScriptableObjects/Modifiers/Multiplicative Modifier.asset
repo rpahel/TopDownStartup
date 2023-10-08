@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd12012e6e2ff340bbd1f5d5044a797, type: 3}
-  m_Name: RawPlayerStats
+  m_Script: {fileID: 11500000, guid: 178963d7d279b404d9c289f4e8118cf9, type: 3}
+  m_Name: Multiplicative Modifier
   m_EditorClassIdentifier: 
-  _baseFireRate: 1
-  _health: {fileID: 0}
-  _baseDamage: 2

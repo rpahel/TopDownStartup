@@ -10,17 +10,12 @@ namespace Game
         [SerializeField] PlayerStats _stats;
         [SerializeField] PlayerStatsReference _ref;
 
-        public int GetDamage => _stats.Damage;
+        public int GetDamage => _stats.DamageAlterable.CalculateValue(); // Il faudrait calculer que lorsque un nouveau modifier est ajoute et stocker la valeur a jour pour eviter de devoir recalculer la valeur tout le temps.
         
         ISet<PlayerStats> RealRef => _ref;
 
-        public IReadOnlyList<int> T { get => t; }
-
-        List<int> t;
-
         void Awake()
         {
-            //_ref.Set(_e);
             RealRef.Set(_stats);
         }
     }

@@ -6,13 +6,17 @@ namespace Game
 {
     public class Item
     {
-        private List<object> _modObjects = new();
-        private List<StatsModifier> _mods = new();
+        private List<object> _modObjects;
+        private List<StatsModifier> _mods;
 
-        public void InitializeItem(List<StatsModifier> mods)
+        public List<object> ModObjects => _modObjects;
+        public List<StatsModifier> Mods => _mods;
+
+        public Item(List<StatsModifier> mods)
         {
             _mods = mods;
-
+            _modObjects = new();
         }
+
     }
 }

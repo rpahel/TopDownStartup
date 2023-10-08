@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2421128092144587941}
   - component: {fileID: 8199330076990476348}
   - component: {fileID: 8894242988290185686}
+  - component: {fileID: 2531000742732927641}
   - component: {fileID: 3525388141807794561}
   m_Layer: 0
   m_Name: Studded_Wooden_Chest
@@ -200,6 +201,7 @@ MonoBehaviour:
         m_CallState: 2
   Conditions:
   - {fileID: 8894242988290185686}
+  - {fileID: 2531000742732927641}
 --- !u!114 &8894242988290185686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +212,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76d2b223c7b2ce044a130688d9f5b2ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2531000742732927641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347543616739314971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc43c78fa1e66d448e146011b340a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3525388141807794561
@@ -327,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3574084530243335396
 Transform:
   m_ObjectHideFlags: 0
